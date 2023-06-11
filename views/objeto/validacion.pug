@@ -1,0 +1,68 @@
+extends ../layout/app
+
+block styles
+    link(rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css")
+
+
+block contenido
+    div.py-10
+        h1.text-4xl.my-10.font-extrabold.text-center Calidad
+            span.font-normal Datos
+        h2.text-center.text-2xl.font-extrabold= pagina
+
+      
+        if errores 
+            div(class="max-w-md mx-auto my-10")
+                each error in errores 
+                    p.bg-red-600.text-white.uppercase-text-xs.text-center.p-2.mb-1.fond-bold= error.msg
+
+
+        div(class="bg-white shadow py-8 px-4 rounded mx-auto max-w-4xl my-10 md:px-10")
+
+            form.space-y-8(method="POST" action="/objeto/validacion")
+                input(type="hidden" name="_csrf" value=csrfToken)
+                div.space-y-5
+                    h3.text-lg.leading-6.font-medium.text-gray-900 Validaciones x Objeto
+
+                    div
+                        label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="idobjeto") IdObjeto: 1 
+
+                        label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="nombreobjeto") Tabla: PERSONA                                          
+                    
+                    div
+                        table(style='width:100%', border='1')
+                            tr
+                                th(class="border border-slate-600") Cabecera
+                                    label.v-checkbox.v-circle
+                                    input(type="checkbox" checked)
+                                th(class="border border-slate-600") Valores Null
+                                    label.v-checkbox.v-circle
+                                    input(type="checkbox" checked)
+                                th(class="border border-slate-600") Registro Duplicado
+                                    label.v-checkbox.v-circle
+                                    input(type="checkbox" checked)
+                            tr
+                                th(class="border border-slate-600") Orden de Columnas
+                                    label.v-checkbox.v-circle
+                                    input(type="checkbox" checked)
+                                th(class="border border-slate-600") Rango Datos Esperados
+                                    label.v-checkbox.v-circle
+                                    input(type="checkbox" checked)
+                                th(class="border border-slate-600") Valores Unicos
+                                    label.v-checkbox.v-circle
+                                    input(type="checkbox" checked)
+                            tr
+                                th(class="border border-slate-600") Tipo de Datos
+                                    label.v-checkbox.v-circle
+                                    input(type="checkbox" checked)
+                                th(class="border border-slate-600") Longitud de Datos
+                                    label.v-checkbox.v-circle
+                                    input(type="checkbox" checked)
+                                th(class="border border-slate-600") Nombre Archivo
+                                    label.v-checkbox.v-circle
+                                    input(type="checkbox" checked)
+                                    
+                                  
+                                
+
+

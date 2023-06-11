@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize'
 import dotenv from 'dotenv'
 
+//Donde se encuentra el archivo de configuración
 dotenv.config({path: '.env'})
 
 

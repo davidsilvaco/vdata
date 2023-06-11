@@ -1,6 +1,6 @@
 //Son de uso general
 import express from 'express'
-import {inicio,categoria,noEncontrado,buscador} from '../controllers/appController.js'
+import {inicio,noEncontrado,buscador} from '../controllers/appController.js'
 
 const router = express.Router()
 
@@ -8,7 +8,7 @@ const router = express.Router()
 router.get('/', inicio)
 
 // Página Categoría
-router.get('/categorias/:id', categoria)
+//router.get('/categorias/:id', categoria)
 
 // Página 404
 router.get('/404', noEncontrado)

@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import usuarioRoutes from './routes/usuarioRoutes.js'
 import serviciosRoutes from './routes/serviciosRoutes.js';
 import appRoutes from './routes/appRoutes.js';
+import objetoRoutes from './routes/objetoRoutes.js';
 import db from './config/db.js';
 
 //crear el nombre de variable de la aplicacion
@@ -22,7 +23,7 @@ app.use(csrf({ cookie: true}))
 //Conexion a la base de datos
 try {
     await db.authenticate();
-    //Genere las tablas sync()
+    //Genere las tablas sync() si no existen
     db.sync()
     console.log("Conexion correcta");
 } catch (error) {
@@ -41,6 +42,7 @@ app.use('/', appRoutes)
 // Use busca todo lo que inicia con una diagonal
 app.use('/auth', usuarioRoutes);
 app.use('/', serviciosRoutes);
+app.use('/', objetoRoutes);
 //app.use('/api', apiRoutes)
 
 //Definir un puero y arrancar app

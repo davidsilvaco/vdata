@@ -1,0 +1,44 @@
+extends ../layout/app
+
+block styles
+    link(rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css")
+
+
+block contenido
+    div.py-10
+        h1.text-4xl.my-10.font-extrabold.text-center Calidad
+            span.font-normal Datos
+        h2.text-center.text-2xl.font-extrabold= pagina
+
+        if errores 
+            div(class="max-w-md mx-auto my-10")
+                each error in errores 
+                    p.bg-red-600.text-white.uppercase-text-xs.text-center.p-2.mb-1.fond-bold= error.msg
+        div(class="bg-white shadow py-8 px-4 rounded mx-auto max-w-4xl my-10 md:px-10")
+            table(style='width:100%', border='1')
+                thead 
+                    tr.bg-green-500.text-gray-500.mb-3.font-bold
+                        th(class="border border-slate-600") IdObjeto
+                        th(class="border border-slate-600") Nombre Archivo
+                        th(class="border border-slate-600") Nombre Tabla
+                        th(class="border border-slate-600") Fecha de Registro
+                        th(class="border border-slate-600") Accion
+                tbody 
+                    tr
+                        td 1
+                        td personas.csv
+                        td PERSONAS
+                        td 12/16/2023
+                        td Editar
+                    tr
+                        td 2
+                        td ventas.csv
+                        td VENTAS
+                        td 12/16/2023
+                        td Editar
+                    tr
+                        td 2
+                        td compras.csv
+                        td COMPRAS
+                        td 12/16/2023
+                        td Editar
