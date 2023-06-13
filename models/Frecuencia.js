@@ -1,7 +1,7 @@
 import {DataTypes} from 'sequelize';
 import db from '../config/db.js';
 
-const Frecuencia = db.define('frecuencia',{
+const Frecuencia = db.define('frecuencias',{
     idFrecuencia: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,

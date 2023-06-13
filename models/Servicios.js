@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize'
 import db from '../config/db.js'
 
-const Servicio = db.define('servicio', {
+const Servicio = db.define('servicios', {
 
     id: {
         type: DataTypes.UUID,
