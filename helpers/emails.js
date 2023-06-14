@@ -16,8 +16,8 @@ const emailRegistro = async (datos) => {
   await transport.sendMail({
     from: "mypaw.com",
     to: email,
-    subject: "Confirma tu Cuenta en mypaw.com",
-    text: "Confirma tu Cuenta en mypaw.com",
+    subject: "Confirma tu Cuenta en CalidadDatos.com",
+    text: "Confirma tu Cuenta en CalidadDatos.com",
     html: `
             <p>Hola ${nombre}, comprueba tu cuenta en validadata.com </p>
 
