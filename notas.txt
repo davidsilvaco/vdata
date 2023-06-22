@@ -34,3 +34,24 @@ npm i bcryptjs
 npm i multer
 npm i csurf
 npm i cookie-parser
+
+---subir archivos aws
+npm i express-fileupload aws-sdk
+
+--instalar great expectation
+python -m pip install great_expectations
+--v3-api
+great_expectations datasource new --no-jupyter
+great_expectations datasource list
+--creando las reglas de calidad
+great_expectations suite new --no-jupyter
+cd suite new --no-jupyter
+great_expectations --v3-api doc build
+great_expectations --v3-api checkpoint new myckp --no-jupyter
+
+
+
+
+
+
+
