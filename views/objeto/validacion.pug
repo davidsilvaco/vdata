@@ -3,30 +3,28 @@ extends ../layout/app
 block styles
     link(rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css")
 
-
 block contenido
-    div.py-10
-        h1.text-4xl.my-10.font-extrabold.text-center Calidad
-            span.font-normal Datos
-        h2.text-center.text-2xl.font-extrabold= pagina
-
-      
+    div.py-1 
+        h2.text-center.text-2xl.font-extrabold= pagina      
         if errores 
             div(class="max-w-md mx-auto my-10")
                 each error in errores 
                     p.bg-red-600.text-white.uppercase-text-xs.text-center.p-2.mb-1.fond-bold= error.msg
 
 
-        div(class="bg-white shadow py-8 px-4 rounded mx-auto max-w-4xl my-10 md:px-10")
+        div(class="bg-white shadow py-4 px-4 rounded mx-auto max-w-4xl my-10 ")
+            div.container.mx-auto.p-4
+                form(action='/upload', method='post', enctype='multipart/form-data')
+                    div.flex.flex-col.items-left.space-y-1
+                        input(type='file', name='file' class='border rounded-lg p-2')
+                        button(type='submit' class='bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg') Validar Archivo
+                        
 
             form.space-y-8(method="POST" action="/objeto/validacion")
                 input(type="hidden" name="_csrf" value=csrfToken)
-                div.space-y-5
-                    h3.text-lg.leading-6.font-medium.text-gray-900 Validaciones x Objeto
-
+                div.space-y-5    
                     div
-                        label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="idobjeto") IdObjeto: 1 
-
+                        label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="idobjeto") IdObjeto: 1
                         label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="nombreobjeto") Tabla: PERSONA                                          
                     
                     div

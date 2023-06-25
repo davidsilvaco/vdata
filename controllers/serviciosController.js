@@ -383,7 +383,7 @@ const mostrarServicio = async (req, res) => {
     ]
   })
 
-  if(!servicio ,, !servicio.publicado){
+  if(!servicio || !servicio.publicado){
     return res.redirect('/404')
   }
 

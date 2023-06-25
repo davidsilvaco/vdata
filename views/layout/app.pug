@@ -7,9 +7,17 @@ html(lang="es")
         title Valida Calidad Datos ,  #{pagina}
         block styles
         link(rel="stylesheet", href="/css/app.css")
+        script(src="https://code.jquery.com/jquery-3.7.0.min.js"
+                integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+                crossorigin="anonymous")
+        link(rel="stylesheet", href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" defer)
+        script(src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js" defer)
+        script(defer).
+            $(document).ready( function(){ 
+            $('#tabla').DataTable(); });
+
     body.min-h-screen.bg-gray-50
         include includes/header-app
-
         main(class="mx-auto container mt-10 px-2")
             block contenido
 
