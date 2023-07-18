@@ -50,6 +50,35 @@ great_expectations --v3-api doc build
 great_expectations --v3-api checkpoint new myckp --no-jupyter
 
 
+npm install great-expectations-node
+npm install csv
+const greatExpectations = require('great-expectations-node');
+const csv = require('csv');
+
+const expectations = {
+  "column_values_to_be_between": {
+    "column": "passenger_count",
+    "min_value": 1,
+    "max_value": 6,
+  },
+};
+
+const csvData = csv.parse('passenger_data.csv');
+
+const results = greatExpectations.validate(expectations, csvData);
+
+console.log(results);
+
+--instarlar fastapi
+python -m venv fastapi-env
+fastapi-env\Scripts\activate
+--por si no quiere 
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+pip install fastapi
+pip install uvicorn
+
+uvicorn main:app --reload
+
 
 
 

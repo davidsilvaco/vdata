@@ -2,26 +2,23 @@ import {DataTypes} from 'sequelize';
 import db from '../config/db.js';
 
 const Objeto = db.define('objetos',{
-    idObjeto: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-        allowNull: false,
-        primaryKey: true
-    },
-    nombreObjeto: {
+  
+    nombretabla: {
         type: DataTypes.STRING(100),
         allowNull:false
     },
-    nombreTabla:{
+    nombrearchivo:{
         type: DataTypes.STRING(50),
-        allowNull: false,
+        allowNull: false
+    },
+    extension:{
+        type: DataTypes.STRING(5),
+        allowNull: false
+    },
+    frecuencia:{
+        type: DataTypes.STRING(10),
+        allowNull: false
     }
-    ,
-    idFrecuencia:{
-        type: DataTypes.STRING(50),
-        allowNull: false,
-    }
-
 
 })
 

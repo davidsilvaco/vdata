@@ -81,9 +81,8 @@ const autenticar = async (req, res) => {
 
     // Almacenar en un cookie
     return res.cookie('_token', token, {
-            httpOnly: true,  //Evitar los ataques crossfile
-      
-    }).redirect('/mis-servicios')
+            httpOnly: true,  //Evitar los ataques crossfile      
+    }).redirect('/objeto/listar')
 
 }
 
