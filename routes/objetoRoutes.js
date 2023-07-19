@@ -1,5 +1,5 @@
 import express from 'express';
-import {formularioCrear,formularioEditar,formularioListar,formularioValidacion,insertaObjeto} from '../controllers/objetoController.js'
+import {formularioCrear,formularioEditar,formularioListar,formularioValidacion,validarObjeto,insertaObjeto} from '../controllers/objetoController.js'
 
 
 const router = express.Router();

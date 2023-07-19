@@ -1,6 +1,8 @@
 import express from 'express'
 import csrf from 'csurf';
 import cookieParser from 'cookie-parser';
+import moment from 'moment';
+//const moment = require('moment');
 
 import usuarioRoutes from './routes/usuarioRoutes.js'
 import serviciosRoutes from './routes/serviciosRoutes.js';
@@ -36,6 +38,8 @@ app.set('views','./views')
 //Carpeta Publica
 app.use(express.static('public'))
 
+// Configurar Moment.js como variable global para las vistas
+app.locals.moment = moment;
 
 // Routing
 app.use('/', appRoutes)

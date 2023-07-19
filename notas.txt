@@ -69,6 +69,10 @@ const results = greatExpectations.validate(expectations, csvData);
 
 console.log(results);
 
+pip install --user great_expectations
+pip install great_expectations
+
+
 --instarlar fastapi
 python -m venv fastapi-env
 fastapi-env\Scripts\activate
@@ -80,7 +84,7 @@ pip install uvicorn
 uvicorn main:app --reload
 
 
-
-
+python -m pip freeze > requirements.txt
+python -m pip install -r requirements.txt
 
 

@@ -6,9 +6,9 @@ import ejecuta_ge as ege
 
 app = FastAPI()
 
-class Validador(BaseModel):
+class Reglas(BaseModel):
     nombre:str
-    validaciones:dict
+    regla:dict
     archivo:str
     ##archivo:Optional[str]
 
@@ -16,33 +16,11 @@ class Validador(BaseModel):
 def index():
     return {"mensaje":"hola mundo"}
 
-
-@app.get("/libros/{id}")
-def mostrar_libro(id:int):
-    return {"libroid":id}
-
 @app.post("/validador")
-def ejecuta_val(validador:Validador):
-    nombre=validador.nombre
-    archivo=validador.archivo
-    validaciones=validador.validaciones["tipo_expect"]       
- 
-    datos=[
-            {
-                "expectation_type": "expect_column_to_exist",
-                "kwargs": {
-                    "column": "DNI"
-                }
-            },
-            {
-                "expectation_type": "expect_column_values_to_be_between",
-                "kwargs": {
-                    "column": "RUC",
-                    "min_value": 0,
-                    "max_value": 100000
-                }
-            }
-        ]
+def ejecuta_val(reglas:Reglas):
+    nombre=reglas.nombre
+    archivo=reglas.archivo
+    validaciones=reglas.regla["tipo_expect"]          
     #archvio='../data/CLIENTES_20180101.csv'
     salida = ege.valida(nombre,validaciones,archivo)
     #print(salida["success"])

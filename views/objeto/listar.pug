@@ -27,38 +27,19 @@ block contenido
                         th(data-priority=6) Editar
                         th(data-priority=7) Eliminar
                 tbody 
-                    tr
-                        td 1
-                        td personas.csv
-                        td PERSONAS
-                        td 12/16/2023
-                        td 
-                            button(class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded") Validar
-                        td
-                            button(class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded") Editar
-                        td
-                            button(class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded") Eliminar
-                    tr
-                        td 2
-                        td ventas.csv
-                        td VENTAS
-                        td 12/16/2023
-                        td 
-                            button(class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded") Validar
-                        td
-                            button(class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded") Editar
-                        td
-                            button(class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded") Eliminar
-                            
-                    tr
-                        td 2
-                        td compras.csv
-                        td COMPRAS
-                        td 12/16/2023
-                        td 
-                            button(class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded") Validar
-                        td
-                            button(class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded") Editar
-                        td
-                            button(class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded") Eliminar
-                            
+                    each objeto in data
+                        tr
+                            td.id=objeto.id ? objeto.id : ''
+                            td.nombretabla=objeto.nombretabla ? objeto.nombretabla : ''
+                            td.nombrearchivo=objeto.nombrearchivo ? objeto.nombrearchivo : ''
+                            td.createAt=moment(objeto.createdAt).format('DD/MM/YYYY') ? moment(objeto.createdAt).format('DD/MM/YYYY') : ''
+                            td 
+                                form(method="GET" action="/objeto/validacion" )
+                                    input(type="hidden" name="_csrf" value=csrfToken)
+                                    input(type="hidden" name="id" value=id)
+                                    button(class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded") Validar
+                            td
+                                button(class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded") Editar
+                            td
+                                button(class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded") Eliminar
+                  

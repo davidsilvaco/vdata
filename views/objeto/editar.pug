@@ -1,0 +1,81 @@
+extends ../layout/app
+
+block styles
+    link(rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css")
+
+block contenido
+    div.py-5  
+        h2.text-center.text-2xl.font-extrabold= pagina
+      
+        if errores 
+            div(class="max-w-md mx-auto my-10")
+                each error in errores 
+                    p.bg-red-600.text-white.uppercase-text-xs.text-center.p-2.mb-1.fond-bold= error.msg
+
+
+        div(class="container bg-white shadow py-8 px-4 rounded mx-auto max-w-4xl my-10 md:px-10")
+
+            form.space-y-8(method="POST" action="/objeto/editar")
+                input(type="hidden" name="_csrf" value=csrfToken)
+                div.space-y-5                   
+                    div
+                        label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="nombretabla") Nombre Tabla
+                        input#nombretabla.uppercase.appearance-none.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Nombre Tabla" type="text" name="nombretabla"  value= objeto ? objeto.nombretabla : '' )                  
+                    div
+                        label(class="block uppercase text-sm text-gray-500 mb-3 font-bold" for="nombrearchivo") Nombre Archivo
+                        input#nombrearchivo.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Nombre Archivo" type="text" name="nombrearchivo"  value= objeto ? objeto.nombrearchivo : '')
+                
+                    div
+                        table(border="2" class="stripe hover border border-collapse w-full" style="width: 100%; padding-top: 1em; padding-botton: 1em;")
+                            tr 
+                                td(class=" text-sm text-gray-500 mb-3 font-bold border p-2 text-center") EXTENSION 
+                                td(class=" text-sm text-gray-500 mb-3 font-bold border p-2 text-center") FRECUENCIA 
+                            tr 
+                                td(class="border p-2 ")
+                                    select(name="extension" value= objeto ? objeto.extension : '')
+                                        option(value=".txt") .txt
+                                        option(value=".csv") .csv
+                                        
+                                td(class="border p-2 ")
+                                    select(name="frecuencia" value= objeto ? objeto.frecuencia : '')
+                                        option(value="DIARIA") DIARIA
+                                        option(value="SEMANAL") SEMANAL
+                                        option(value="MENSUAL") MENSUAL
+                        //input#frecuencia.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="DIARIA" type="text" name="frecuencia"  value= objeto ? objeto.frecuencia : '')
+     
+                
+                    input(class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 rounded text-white font-bold uppercase cursor-pointer" type="submit" value="Grabar Datos")
+        
+        
+             
+        div(class="container bg-white shadow py-8 px-4 rounded mx-auto max-w-4xl my-10 md:px-10")
+            div(class='container flex items-center justify-center')
+            button(href = "" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded") Agregar Columna          
+            
+            table#tabla(class="stripe hover" style="width: 100%; padding-top: 1em; padding-botton: 1em;")
+                thead 
+                    tr(class="bg-indigo-400 bg-opacity-100 text-white")
+                        th(data-priority=1) IdCol
+                        th(data-priority=2) NombreColumna
+                        th(data-priority=3) Flg Valida                                        
+                        th(data-priority=6) Editar
+                        th(data-priority=7) Eliminar
+                tbody                     
+                        tr
+                            td 1
+                            td col1
+                            td S                                                     
+                            td
+                                button(class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded") Editar
+                            td
+                                button(class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded") Eliminar
+                        tr
+                            td 2
+                            td col2
+                            td S                                                    
+                            td
+                                button(class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded") Editar
+                            td
+                                button(class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded") Eliminar
+                  
+                  

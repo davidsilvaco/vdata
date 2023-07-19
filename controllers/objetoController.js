@@ -90,8 +90,17 @@ const formularioEditar = (req, res) => {
     })
 }
 
-const formularioListar = (req, res) => {
+const formularioListar = async (req, res) => {
+    const data = await Objeto.findAll();
     res.render('objeto/listar',{
+        pagina: 'Listar Objetos',
+        csrfToken : req.csrfToken(),
+        data
+    })
+}
+const formularioValidacion = (req, res) => {
+    
+    res.render('objeto/validacion',{
         pagina: 'Listar Objetos',
         csrfToken : req.csrfToken()
     })
