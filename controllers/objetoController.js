@@ -101,13 +101,32 @@ const formularioListar = async (req, res) => {
 const formularioValidacion = (req, res) => {
     
     res.render('objeto/validacion',{
-        pagina: 'Listar Objetos',
-        csrfToken : req.csrfToken()
+        pagina: 'Validar Objetos',
+        csrfToken : req.csrfToken(),
+        idTabla : req.id,
+        nombreTabla : req.nombreTabla
     })
 }
 
 const validarObjeto = (req, res) => {
     res.render('objeto/validacion',{
+        pagina: 'Listar Objetos y Su Validacion',
+        csrfToken : req.csrfToken()
+    })
+}
+
+const creaObjetoDetalle = (req, res) => {
+    res.render('objeto/detalle',{
+        pagina: 'Listar Objetos y Su Validacion',
+        csrfToken : req.csrfToken()
+
+    
+
+
+    })
+}
+const obtenerObjetoDetalle = (req, res) => {
+    res.render('objeto/detalle',{
         pagina: 'Listar Objetos y Su Validacion',
         csrfToken : req.csrfToken()
     })

@@ -13,52 +13,22 @@ block contenido
 
         div(class="bg-white shadow py-4 px-4 rounded mx-auto max-w-4xl my-10 ")
             div.container.mx-auto.p-4
+
+             h2.text-center.text-2xl.font-extrabold= idTabla 
+             h2.text-center.text-2xl.font-extrabold= nombreTabla
                 form(action='/upload', method='post', enctype='multipart/form-data')
                     div.flex.flex-col.items-left.space-y-1
                         input(type='file', name='file' class='border rounded-lg p-2')
                         button(type='submit' class='bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg') Validar Archivo
 
-            form.space-y-8(method="POST" action="/objeto/validacion")
-                input(type="hidden" name="_csrf" value=csrfToken)
-                div.space-y-5    
-                    div
-                        label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="idobjeto") IdObjeto: 1
-                        label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="nombreobjeto") Tabla: PERSONA                                          
-                    
-                    div
-                        table(style='width:100%', border='1')
-                            tr
-                                th(class="border border-slate-600") Cabecera
-                                    label.v-checkbox.v-circle
-                                    input(type="checkbox" checked)
-                                th(class="border border-slate-600") Valores Null
-                                    label.v-checkbox.v-circle
-                                    input(type="checkbox" checked)
-                                th(class="border border-slate-600") Registro Duplicado
-                                    label.v-checkbox.v-circle
-                                    input(type="checkbox" checked)
-                            tr
-                                th(class="border border-slate-600") Orden de Columnas
-                                    label.v-checkbox.v-circle
-                                    input(type="checkbox" checked)
-                                th(class="border border-slate-600") Rango Datos Esperados
-                                    label.v-checkbox.v-circle
-                                    input(type="checkbox" checked)
-                                th(class="border border-slate-600") Valores Unicos
-                                    label.v-checkbox.v-circle
-                                    input(type="checkbox" checked)
-                            tr
-                                th(class="border border-slate-600") Tipo de Datos
-                                    label.v-checkbox.v-circle
-                                    input(type="checkbox" checked)
-                                th(class="border border-slate-600") Longitud de Datos
-                                    label.v-checkbox.v-circle
-                                    input(type="checkbox" checked)
-                                th(class="border border-slate-600") Nombre Archivo
-                                    label.v-checkbox.v-circle
-                                    input(type="checkbox" checked)
-                                    
-                                  
-                                
-
-
+            table(class="stripe hover" style="width: 100%; padding-top: 1em; padding-botton: 1em;")
+                thead 
+                    tr(class="bg-indigo-400 bg-opacity-100 text-white")
+                        th(data-priority=1) Id
+                        th(data-priority=2) NombreTabla
+                        th(data-priority=3) NombreArchivo
+                        th(data-priority=4) FechaRegistro
+                        th(data-priority=5) Validar
+                        th(data-priority=6) Editar
+                        th(data-priority=7) Eliminar
+                tbody 

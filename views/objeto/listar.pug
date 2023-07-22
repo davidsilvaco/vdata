@@ -36,10 +36,17 @@ block contenido
                             td 
                                 form(method="GET" action="/objeto/validacion" )
                                     input(type="hidden" name="_csrf" value=csrfToken)
-                                    input(type="hidden" name="id" value=id)
+                                    input(type="hidden" name="id" value=objeto.id)
+                                    input(type="hidden" name="nombretabla" value=objeto.nombretabla)                                    
                                     button(class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded") Validar
                             td
-                                button(class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded") Editar
+                                 form(method="GET" action="/objeto/editar" )
+                                    input(type="hidden" name="_csrf" value=csrfToken)
+                                    input(type="hidden" name="id" value=objeto.id)
+                                    button(class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded") Editar
                             td
-                                button(class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded") Eliminar
+                                form(method="GET" action="/objeto/eliminar" )
+                                    input(type="hidden" name="_csrf" value=csrfToken)
+                                    input(type="hidden" name="id" value=objeto.id)
+                                    button(class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded") Eliminar
                   

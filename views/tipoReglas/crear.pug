@@ -1,0 +1,32 @@
+extends ../layout/app
+
+block styles
+    link(rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css")
+
+block contenido
+    div.py-5  
+        h2.text-center.text-2xl.font-extrabold= pagina
+      
+        if errores 
+            div(class="max-w-md mx-auto my-10")
+                each error in errores 
+                    p.bg-red-600.text-white.uppercase-text-xs.text-center.p-2.mb-1.fond-bold= error.msg
+
+
+        div(class="container bg-white shadow py-8 px-4 rounded mx-auto max-w-4xl my-10 md:px-10")
+
+            form.space-y-8(method="POST" action="/tiporegla/crear")
+                input(type="hidden" name="_csrf" value=csrfToken)
+                div.space-y-5                   
+                    div
+                        label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="nombre") Nombre Tipo Regla
+                        input#nombretabla.appearance-none.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Nombre Tipo Regla" type="text" name="nombre"  value= tipoReglas ? tipoReglas.nombre : '' )                  
+                    div
+                        label(class="block uppercase text-sm text-gray-500 mb-3 font-bold" for="nombre_gs") Nombre Great Expectation
+                        input#nombrearchivo.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Nombre Great Expectation" type="text" name="nombre_gs"  value= tipoReglas ? tipoReglas.nombre_gs : '')
+                    div
+                        label(class="block uppercase text-sm text-gray-500 mb-3 font-bold" for="jsondata") Json Base                        
+                        textarea#jsondata(rows="10" cols="50",name="jsondata"  value= tipoReglas ? tipoReglas.jsondata : '' )
+                
+                    input(class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 rounded text-white font-bold uppercase cursor-pointer" type="submit" value="Grabar Datos")
+

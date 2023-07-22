@@ -8,6 +8,8 @@ import usuarioRoutes from './routes/usuarioRoutes.js'
 import serviciosRoutes from './routes/serviciosRoutes.js';
 import appRoutes from './routes/appRoutes.js';
 import objetoRoutes from './routes/objetoRoutes.js';
+import tipoReglasRoutes from './routes/tipoReglasRoutes.js';
+import reglasRoutes from './routes/reglasRoutes.js';
 import db from './config/db.js';
 
 //crear el nombre de variable de la aplicacion
@@ -47,6 +49,8 @@ app.use('/', appRoutes)
 app.use('/auth', usuarioRoutes);
 app.use('/', serviciosRoutes);
 app.use('/', objetoRoutes);
+app.use('/', tipoReglasRoutes);
+app.use('/', reglasRoutes);
 //app.use('/api', apiRoutes)
 
 //Definir un puero y arrancar app

@@ -1,0 +1,41 @@
+extends ../layout/app
+
+block styles
+    link(rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css")
+
+block contenido
+    div.py-5  
+        h2.text-center.text-2xl.font-extrabold= pagina
+      
+        if errores 
+            div(class="max-w-md mx-auto my-10")
+                each error in errores 
+                    p.bg-red-600.text-white.uppercase-text-xs.text-center.p-2.mb-1.fond-bold= error.msg
+
+
+        div(class="container bg-white shadow py-8 px-4 rounded mx-auto max-w-4xl my-10 md:px-10")
+
+            form.space-y-8(method="POST" action="/regla/crear")
+                input(type="hidden" name="_csrf" value=csrfToken)
+                div.space-y-5
+                    div(class="md:flex md:gap-4 space-y-5 md:space-y-0")
+                        div(class="md:w-1/2")
+                            label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="tiporegla") TipoRegla
+                            select#tiporegla.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(name="tiporeglaid")
+                                option(value="") - Selecione -
+                                each tiporegla in tiporeglas
+                                    option(value=tiporegla.id selected= datos.nombre ? datos.nombre == tiporegla.id ? true : false : null)= tiporegla.nombre
+                    
+                    div(class="md:w-1/2")
+                            label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="objeto") Nombre Tabla
+                            select#tiporegla.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(name="objetoid")
+                                option(value="") - Selecione -
+                                each objeto in objetos
+                                    option(value=objeto.id selected= datos.nombretabla ? datos.nombretabla == objeto.id ? true : false : null)= objeto.nombretabla
+                
+                    div
+                        label(class="block uppercase text-sm text-gray-500 mb-3 font-bold" for="jsondata") Json Validación                        
+                        textarea#jsondata.border.border-gray-300.rounded-md(rows="10" cols="50",name="jsondata"  value= reglas ? reglas.jsondata : '' )
+                
+                    input(class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 rounded text-white font-bold uppercase cursor-pointer" type="submit" value="Grabar Datos")
+
