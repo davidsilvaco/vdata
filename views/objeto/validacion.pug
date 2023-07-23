@@ -5,7 +5,7 @@ block styles
 
 block contenido
     div.py-1 
-        h2.text-center.text-2xl.font-extrabold= pagina      
+        h2.text-center.text-2xl.font-extrabold= pagina            
         if errores 
             div(class="max-w-md mx-auto my-10")
                 each error in errores 
@@ -14,21 +14,21 @@ block contenido
         div(class="bg-white shadow py-4 px-4 rounded mx-auto max-w-4xl my-10 ")
             div.container.mx-auto.p-4
 
-             h2.text-center.text-2xl.font-extrabold= idTabla 
-             h2.text-center.text-2xl.font-extrabold= nombreTabla
-                form(action='/upload', method='post', enctype='multipart/form-data')
+            label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="idobjeto")=id
+            label.block.text-sm.uppercase.text-gray-500.mb-3.font-bold(for="nombreobjeto")=nombretabla
+                form(action='/objeto/validaarchivo', method='post', enctype='multipart/form-data')
+                    input(type="hidden" name="_csrf" value=csrfToken)
+                    input(type="hidden" name="idobjeto" value=idobjeto)
+                    input(type="hidden" name="nombreobjeto" value=nombretabla)
                     div.flex.flex-col.items-left.space-y-1
-                        input(type='file', name='file' class='border rounded-lg p-2')
+                        input(type='file', name='archivo' class='border rounded-lg p-2')
                         button(type='submit' class='bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg') Validar Archivo
 
-            table(class="stripe hover" style="width: 100%; padding-top: 1em; padding-botton: 1em;")
-                thead 
-                    tr(class="bg-indigo-400 bg-opacity-100 text-white")
-                        th(data-priority=1) Id
-                        th(data-priority=2) NombreTabla
-                        th(data-priority=3) NombreArchivo
-                        th(data-priority=4) FechaRegistro
-                        th(data-priority=5) Validar
-                        th(data-priority=6) Editar
-                        th(data-priority=7) Eliminar
-                tbody 
+        div(class="bg-white shadow py-4 px-4 rounded mx-auto max-w-4xl my-10 ")
+            div
+                label(class="block uppercase text-sm text-gray-500 mb-3 font-bold" for="resultado") Resultado Prueba
+                input#resultado.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(placeholder="Correcto" type="text" name="resultado"  value= validacion ? validaciones.resultado : '')
+            div
+                label(class="block uppercase text-sm text-gray-500 mb-3 font-bold" for="jsondata") Json Resultado                        
+                textarea#jsondata.border.border-gray-300.rounded-md(rows="10" cols="50",name="jsondata"  value= validaciones ? validaciones.jsondata : '' )
+                

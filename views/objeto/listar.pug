@@ -34,7 +34,7 @@ block contenido
                             td.nombrearchivo=objeto.nombrearchivo ? objeto.nombrearchivo : ''
                             td.createAt=moment(objeto.createdAt).format('DD/MM/YYYY') ? moment(objeto.createdAt).format('DD/MM/YYYY') : ''
                             td 
-                                form(method="GET" action="/objeto/validacion" )
+                                form(method="POST" action="/objeto/validacion" )
                                     input(type="hidden" name="_csrf" value=csrfToken)
                                     input(type="hidden" name="id" value=objeto.id)
                                     input(type="hidden" name="nombretabla" value=objeto.nombretabla)                                    
@@ -43,10 +43,10 @@ block contenido
                                  form(method="GET" action="/objeto/editar" )
                                     input(type="hidden" name="_csrf" value=csrfToken)
                                     input(type="hidden" name="id" value=objeto.id)
-                                    button(class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded") Editar
+                                    button(type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded") Editar
                             td
-                                form(method="GET" action="/objeto/eliminar" )
+                                form(method="GET" action="" )
                                     input(type="hidden" name="_csrf" value=csrfToken)
                                     input(type="hidden" name="id" value=objeto.id)
-                                    button(class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded") Eliminar
+                                    button(type="submit"  class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded") Eliminar
                   

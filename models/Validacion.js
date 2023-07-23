@@ -1,7 +1,7 @@
 import {DataTypes} from 'sequelize';
 import db from '../config/db.js';
 
-const Validaciones = db.define('validacion',{
+const Validacion = db.define('validacion',{
     estado: {
         type: DataTypes.STRING,
         allowNull: false
@@ -13,4 +13,4 @@ const Validaciones = db.define('validacion',{
 
 })
 
-export default Validaciones;
+export default Validacion;

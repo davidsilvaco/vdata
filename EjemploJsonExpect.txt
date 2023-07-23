@@ -1,0 +1,76 @@
+expect_table_columns_to_match_ordered_list
+
+expect_table_columns_to_match_set
+- expect_table_row_count_to_be_between
+	{
+	  "expectation_type": "expect_table_row_count_to_be_between",
+	  "kwargs": {
+		"min_value": 3,
+		"max_value": 10
+	  },
+	  "meta": {},
+	  "success_on_last_run": true
+	}
+
+- expect_column_values_to_not_be_null
+	{
+	  "expectation_type": "expect_column_values_to_not_be_null",
+	  "kwargs": {
+		"column": "nombre"
+	  },
+	  "meta": {},
+	  "success_on_last_run": true
+	}
+
+- expect_column_values_to_be_unique
+{
+  "expectation_type": "expect_column_values_to_be_unique",
+  "kwargs": {
+    "column": "nombre"
+  },
+  "meta": {},
+  "success_on_last_run": true
+}
+
+-expect_column_to_exist
+{
+	"expectation_type": "expect_column_to_exist",
+	"kwargs": {
+		"column": "age"
+	}
+}
+
+-expect_column_values_to_be_between
+{
+	"expectation_type": "expect_column_values_to_be_between",
+	"kwargs": {
+		"column": "salary",
+		"min_value": 0,
+		"max_value": 100000
+	}
+}
+
+
+
+--------------------------
+{
+  "nombre": "Prueba",
+  "regla": {"tipo_expect": [
+            {
+                "expectation_type": "expect_column_to_exist",
+                "kwargs": {
+                    "column": "age"
+                }
+            },
+            {
+                "expectation_type": "expect_column_values_to_be_between",
+                "kwargs": {
+                    "column": "salary",
+                    "min_value": 0,
+                    "max_value": 100000
+                }
+            }
+        ]
+},
+  "archivo": "C:/NodeJs/vdata/fastapi/data/CLIENTES_20180101.csv"
+}

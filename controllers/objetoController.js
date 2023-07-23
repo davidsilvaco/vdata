@@ -82,7 +82,6 @@ const insertaObjeto = async (req, res) => {
     });
 };
 
-
 const formularioEditar = (req, res) => {
     res.render('objeto/editar',{
         pagina: 'Editar Objetos',
@@ -99,21 +98,41 @@ const formularioListar = async (req, res) => {
     })
 }
 const formularioValidacion = (req, res) => {
+    //datos que se envian de ptro forumularo
+    const { id, nombretabla } = req.body;
+
+    //buscar recuperar las expectarion por codigo
     
     res.render('objeto/validacion',{
         pagina: 'Validar Objetos',
         csrfToken : req.csrfToken(),
-        idTabla : req.id,
-        nombreTabla : req.nombreTabla
+        id : id,
+        nombretabla : nombretabla
     })
 }
 
 const validarObjeto = (req, res) => {
+    const { _csrf, id, nombretabla } = req.body;
+    
     res.render('objeto/validacion',{
         pagina: 'Listar Objetos y Su Validacion',
-        csrfToken : req.csrfToken()
+        csrfToken : req.csrfToken(),
+        id : id,
+        nombretabla : nombretabla
     })
 }
+
+const validaArchivo = (req, res) => {
+    const { _csrf, id, nombretabla } = req.body;
+    
+    res.render('objeto/validacion',{
+        pagina: 'Listar Objetos y Su Validacion',
+        csrfToken : req.csrfToken(),
+        id : id,
+        nombretabla : nombretabla
+    })
+}
+
 
 const creaObjetoDetalle = (req, res) => {
     res.render('objeto/detalle',{
@@ -138,6 +157,7 @@ export {
     formularioEditar,
     formularioListar,
     formularioValidacion,
-    validarObjeto
+    validarObjeto,
+    validaArchivo
     
 }

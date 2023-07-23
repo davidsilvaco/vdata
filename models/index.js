@@ -7,7 +7,7 @@ import Mensaje from './Mensaje.js'
 import TipoReglas from './TipoReglas.js'
 import Objeto from './Objeto.js'
 import Reglas from './Reglas.js'
-import Validaciones from './Validaciones.js'
+import Validacion from './Validacion.js'
 
 
 // Uno a uno es de derecha  a izquierda
@@ -32,8 +32,8 @@ Reglas.belongsTo(Objeto, { foreignKey: 'objetoid' });
 TipoReglas.hasMany(Reglas, { foreignKey: 'tiporeglaid' });
 Reglas.belongsTo(TipoReglas, { foreignKey: 'tiporeglaid' });
 
-Validaciones.belongsTo(TipoReglas, {foreignKey: 'tiporeglaid'}) 
-Validaciones.belongsTo(Objeto, {foreignKey: 'objetoid'}) 
+Validacion.belongsTo(TipoReglas, {foreignKey: 'tiporeglaid'}) 
+Validacion.belongsTo(Objeto, {foreignKey: 'objetoid'}) 
 
 export {
     Servicios,
@@ -44,5 +44,5 @@ export {
     TipoReglas,
     Objeto,
     Reglas,
-    Validaciones
+    Validacion
 }
